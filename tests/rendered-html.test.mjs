@@ -42,7 +42,9 @@ test("keeps the finished site free of starter-only files and metadata", async ()
 
   assert.match(page, /restaurantSchema/);
   assert.match(page, /MotionConfig|AnimatePresence/);
-  assert.match(page, /Photo placeholder/);
+  assert.match(page, /menuThemes/);
+  assert.match(page, /ingredient-row/);
+  assert.doesNotMatch(page, /Photo placeholder/);
   assert.match(page, /tel:\+19706419876/);
   assert.match(layout, /Jermaine’s \| Eat\. Drink\. Love\./);
   assert.match(layout, /ice cream Gunnison/);

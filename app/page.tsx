@@ -34,7 +34,10 @@ const breakfastPhoto = photo("photo-1547592180-85f173990554");
 const coffeePhoto = photo("photo-1495474472287-4d71bcdd2085");
 const shakePhoto = photo("photo-1553787499-6f9133860278");
 const chocolateShakePhoto = photo("photo-1572490122747-3968b75cc699");
-const smoothiePhoto = photo("photo-1553530666-ba11a7da3888");
+const greenSmoothiePhoto = photo("photo-1610970881699-44a5587cabec");
+const berrySmoothiePhoto = photo("photo-1622597467836-f3285f2131b8");
+const tropicalSmoothiePhoto = photo("photo-1623065422902-30a2d299bbe4");
+const coolDrinkPhoto = photo("photo-1662130187270-a4d52c700eb6");
 const bobaPhoto = photo("photo-1558857563-b371033873d8");
 const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Jermaine%27s%2C+728+N+Main+St%2C+Gunnison%2C+CO+81230";
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -83,14 +86,14 @@ const menuItems: MenuItem[] = [
   { name: "Oreo Milkshake", description: "Vanilla or chocolate ice cream and Oreo cookies.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
   { name: "M&M Milkshake", description: "Vanilla or chocolate ice cream and M&M's.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
   { name: "Reese's Milkshake", description: "Vanilla or chocolate ice cream and Reese's peanut butter cups.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
-  { name: "Black Berry Milkshake", description: "Vanilla ice cream and blackberries.", price: "$5.50", category: "shakes", image: smoothiePhoto },
+  { name: "Black Berry Milkshake", description: "Vanilla ice cream and blackberries.", price: "$5.50", category: "shakes", image: berrySmoothiePhoto },
   { name: "Chai Shake", description: "Vanilla ice cream and L.P. chai.", price: "$5.50", category: "shakes", image: shakePhoto },
   { name: "Ice Cream Shake", description: "Mix and match any of our ice cream flavors.", price: "$5.50", category: "shakes", image: shakePhoto },
-  { name: "Caribbean Smoothie", description: "Pineapples, mango, sorbet, and fruit juice.", price: "$5.50", category: "shakes", image: smoothiePhoto, tag: "Dairy free" },
-  { name: "Mango Burst Smoothie", description: "Mango, sorbet, and apple juice.", price: "$5.50", category: "shakes", image: smoothiePhoto, tag: "Dairy free" },
-  { name: "Triple Berry Smoothie", description: "Blueberry, strawberry, raspberry, sorbet, and pear juice.", price: "$5.50", category: "shakes", image: smoothiePhoto, tag: "Dairy free" },
-  { name: "Strawberry Banana Smoothie", description: "Strawberry, banana, fro-yo, apple, and pear juice.", price: "$5.50", category: "shakes", image: smoothiePhoto },
-  { name: "Green Machine Smoothie", description: "Mango, spinach, sorbet, ginger, and apple juice.", price: "$5.50", category: "shakes", image: smoothiePhoto, tag: "Dairy free" },
+  { name: "Caribbean Smoothie", description: "Pineapples, mango, sorbet, and fruit juice.", price: "$5.50", category: "shakes", image: tropicalSmoothiePhoto, tag: "Dairy free" },
+  { name: "Mango Burst Smoothie", description: "Mango, sorbet, and apple juice.", price: "$5.50", category: "shakes", image: tropicalSmoothiePhoto, tag: "Dairy free" },
+  { name: "Triple Berry Smoothie", description: "Blueberry, strawberry, raspberry, sorbet, and pear juice.", price: "$5.50", category: "shakes", image: berrySmoothiePhoto, tag: "Dairy free" },
+  { name: "Strawberry Banana Smoothie", description: "Strawberry, banana, fro-yo, apple, and pear juice.", price: "$5.50", category: "shakes", image: berrySmoothiePhoto },
+  { name: "Green Machine Smoothie", description: "Mango, spinach, sorbet, ginger, and apple juice.", price: "$5.50", category: "shakes", image: greenSmoothiePhoto, tag: "Dairy free" },
   { name: "Frozen Yogurt", description: "Build your own cup with flavors and toppings to match your mood.", category: "sweet", image: photo("photo-1550594645-25c5bd703258"), tag: "Make it yours" },
   { name: "Ice Cream", description: "A cheerful scoop, a colorful cone, or however you like it.", category: "sweet", image: photo("photo-1501443762994-82bd5dace89a"), tag: "Cool treat" },
   { name: "Drip Coffee", description: "Bring your own cup or choose a 12 oz or 16 oz pour.", price: "$2.00+", category: "coffee", image: coffeePhoto, tag: "Hot or iced" },
@@ -105,12 +108,12 @@ const menuItems: MenuItem[] = [
   { name: "Dirty Chai", description: "L.P. chai, milk, and espresso. 12 oz or 16 oz.", price: "$3.50+", category: "coffee", image: coffeePhoto },
   { name: "Hot Chocolate", description: "Rich hot chocolate served warm and cozy.", price: "$3.35+", category: "coffee", image: chocolateShakePhoto },
   { name: "Matcha Latte", description: "Matcha and milk with a bright, earthy finish. 12 oz or 16 oz.", price: "$3.65+", category: "coffee", image: coffeePhoto },
-  { name: "Italian Cream Soda", description: "Ask about the current flavors and make it a refreshing, creamy soda.", price: "$3.25", category: "drinks", image: smoothiePhoto, tag: "Ask about flavors" },
+  { name: "Italian Cream Soda", description: "Ask about the current flavors and make it a refreshing, creamy soda.", price: "$3.25", category: "drinks", image: coolDrinkPhoto, tag: "Ask about flavors" },
   { name: "Lavender Milk Tea", description: "Crystal boba with a floral lavender milk tea base.", price: "$5.25", category: "drinks", image: bobaPhoto, tag: "Crystal boba" },
   { name: "Milk Tea", description: "Classic milk tea with crystal boba.", price: "$5.25", category: "drinks", image: bobaPhoto, tag: "Crystal boba" },
   { name: "Matcha Green Tea", description: "Bright matcha green tea with crystal boba.", price: "$5.25", category: "drinks", image: bobaPhoto, tag: "Crystal boba" },
-  { name: "Passion Fruit Tea", description: "A bright, tropical tea for an easy afternoon sip.", price: "$4.00", category: "drinks", image: smoothiePhoto },
-  { name: "Soda", description: "A simple cold drink to go with lunch or a sweet treat.", price: "$3.50", category: "drinks", image: smoothiePhoto },
+  { name: "Passion Fruit Tea", description: "A bright, tropical tea for an easy afternoon sip.", price: "$4.00", category: "drinks", image: tropicalSmoothiePhoto },
+  { name: "Soda", description: "A simple cold drink to go with lunch or a sweet treat.", price: "$3.50", category: "drinks", image: coolDrinkPhoto },
 ];
 
 const categories: Array<{ label: string; filter: ItemCategory; description: string; image: string; accent: string }> = [
@@ -173,8 +176,82 @@ const reveal = {
   transition: { duration: 0.7, ease },
 };
 
+const menuThemes = {
+  garden: { label: "garden fresh", icon: "✿", ingredients: ["leafy greens", "avocado", "herb lift"] },
+  herb: { label: "herb + bright", icon: "✦", ingredients: ["basil", "tomato", "mozzarella"] },
+  berry: { label: "berry bright", icon: "✺", ingredients: ["berries", "fruit", "ice cold"] },
+  tropical: { label: "tropical chill", icon: "✧", ingredients: ["mango", "pineapple", "sorbet"] },
+  jamaica: { label: "island spice", icon: "✹", ingredients: ["warm spice", "jerk", "Caribbean soul"] },
+  breakfast: { label: "morning fuel", icon: "☀", ingredients: ["eggs", "hash browns", "bacon"] },
+  smoky: { label: "smoky + bold", icon: "◒", ingredients: ["slow cooked", "BBQ", "savory"] },
+  cheese: { label: "melty comfort", icon: "✺", ingredients: ["toasty", "cheese pull", "comfort"] },
+  coffee: { label: "coffeehouse", icon: "☕", ingredients: ["espresso", "milk", "foam"] },
+  caramel: { label: "caramel cloud", icon: "✧", ingredients: ["caramel", "cream", "espresso"] },
+  cocoa: { label: "chocolate crush", icon: "●", ingredients: ["cocoa", "cookie", "cream"] },
+  boba: { label: "chewy + cool", icon: "○", ingredients: ["tea", "crystal boba", "sweet sip"] },
+  vanilla: { label: "cool + creamy", icon: "❋", ingredients: ["creamy", "toppings", "happy"] },
+  savory: { label: "toasty + savory", icon: "◌", ingredients: ["fresh", "toasted", "house sauce"] },
+} as const;
+
+type MenuThemeKey = keyof typeof menuThemes;
+
+function getMenuTheme(item: MenuItem): MenuThemeKey {
+  const text = `${item.name} ${item.description}`.toLowerCase();
+  if (text.includes("boba") || text.includes("milk tea")) return "boba";
+  if (text.includes("green machine") || text.includes("spinach") || text.includes("avocado") || text.includes("cucumber") || text.includes("veggie")) return "garden";
+  if (text.includes("pesto") || text.includes("caprese") || text.includes("basil")) return "herb";
+  if (text.includes("caribbean") || text.includes("mango") || text.includes("pineapple") || text.includes("passion fruit")) return "tropical";
+  if (text.includes("berry") || text.includes("strawberry")) return "berry";
+  if (text.includes("blue mountain")) return "coffee";
+  if (text.includes("jamaican") || text.includes("jerk") || text.includes("curry")) return "jamaica";
+  if (item.category === "breakfast" || text.includes("breakfast") || text.includes("egg") || text.includes("hash brown") || text.includes("hollandaise")) return "breakfast";
+  if (text.includes("short rib") || text.includes("bbq") || text.includes("gyro") || text.includes("ranch")) return "smoky";
+  if (text.includes("caramel")) return "caramel";
+  if (text.includes("chocolate") || text.includes("oreo") || text.includes("reese") || text.includes("m&m") || text.includes("mudslide")) return "cocoa";
+  if (text.includes("coffee") || text.includes("espresso") || text.includes("mocha") || text.includes("chai") || text.includes("cappuccino") || text.includes("latte") || text.includes("americano") || text.includes("cafe au lait")) return "coffee";
+  if (text.includes("cheese") || text.includes("swiss") || text.includes("mozzarella") || text.includes("melt")) return "cheese";
+  if (item.category === "sweet") return "vanilla";
+  return "savory";
+}
+
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
+}
+
+function MenuCard({ item, index }: { item: MenuItem; index: number }) {
+  const themeKey = getMenuTheme(item);
+  const theme = menuThemes[themeKey];
+
+  return (
+    <motion.article
+      className={`menu-card menu-theme-${themeKey}`}
+      data-category={item.category}
+      data-theme={themeKey}
+      key={item.name}
+      layout
+      initial={{ opacity: 0, y: 24, scale: 0.96 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -18, scale: 0.94 }}
+      transition={{ delay: Math.min(index * 0.035, 0.5), duration: 0.42, ease }}
+      whileHover={{ y: -10, rotate: index % 2 ? 0.55 : -0.55 }}
+      whileTap={{ scale: 0.985 }}
+    >
+      <div className="menu-card-image">
+        <img src={item.image} alt={item.name} loading="lazy" />
+        <span className="menu-card-photo-label"><span aria-hidden="true">{theme.icon}</span>{theme.label}</span>
+        <span className="menu-card-ingredient-mark" aria-hidden="true">{theme.icon}</span>
+        {item.tag && <span className="menu-tag">{item.tag}</span>}
+      </div>
+      <div className="menu-card-copy">
+        <div className="menu-card-meta"><span>{theme.label}</span><i aria-hidden="true">{theme.icon}</i></div>
+        <div className="menu-card-title"><h3>{item.name}</h3>{item.price ? <strong>{item.price}</strong> : <span className="ask-price">Ask us</span>}</div>
+        <p>{item.description}</p>
+        <div className="ingredient-row" aria-label={`${item.name} flavor notes`}>
+          {theme.ingredients.map((ingredient) => <span key={ingredient}>{ingredient}</span>)}
+        </div>
+      </div>
+    </motion.article>
+  );
 }
 
 export default function Home() {
@@ -251,13 +328,13 @@ export default function Home() {
             <motion.div className="hero-actions" initial={false} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.86, duration: 0.6, ease }}><a className="button button-primary" href="#menu">View the menu <Arrow /></a><a className="button button-ghost" href={directionsUrl} target="_blank" rel="noreferrer">Get directions <Arrow /></a></motion.div>
             <motion.a className="hero-phone" href="tel:+19706419876" initial={false} animate={{ opacity: 1 }} transition={{ delay: 1.1, duration: 0.6 }}><span className="phone-icon" aria-hidden="true">☎</span> Call Jermaine’s <strong>(970) 641-9876</strong></motion.a>
           </div>
-          <div className="hero-visual" aria-label="Photo placeholder collage">
+          <div className="hero-visual" aria-label="Jermaine’s colorful ice cream and smoothie collage">
             <motion.div className="hero-orbit orbit-one" animate={{ rotate: [-15, -8, -15] }} transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }} />
             <motion.div className="hero-orbit orbit-two" animate={{ rotate: [25, 34, 25] }} transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }} />
             <motion.div className="float-shape shape-coral" aria-hidden="true" animate={{ y: [0, -16, 0], rotate: [0, 7, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} />
             <motion.div className="float-shape shape-turquoise" aria-hidden="true" animate={{ y: [0, 13, 0], rotate: [0, -6, 0] }} transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }} />
-            <motion.div className="hero-image hero-image-main photo-placeholder" style={{ y: heroParallax, scale: heroScale, rotate: 5 }}><img src={photo("photo-1501443762994-82bd5dace89a")} alt="Colorful ice cream scoops in a cup" fetchPriority="high" /><span>Photo placeholder</span></motion.div>
-            <div className="hero-image hero-image-small photo-placeholder"><img src={photo("photo-1553530666-ba11a7da3888")} alt="Fresh smoothie in a glass" /><span>Photo placeholder</span></div>
+            <motion.div className="hero-image hero-image-main photo-placeholder" style={{ y: heroParallax, scale: heroScale, rotate: 5 }}><img src={photo("photo-1501443762994-82bd5dace89a")} alt="Colorful ice cream scoops in a cup" fetchPriority="high" /><span className="image-kicker">cold + colorful</span></motion.div>
+            <div className="hero-image hero-image-small photo-placeholder"><img src={photo("photo-1553530666-ba11a7da3888")} alt="Fresh smoothie in a glass" /><span className="image-kicker">fresh blend</span></div>
             <div className="hero-sticker sticker-sun" aria-hidden="true"><span>made with</span><strong>good<br />vibes</strong></div>
             <div className="hero-sticker sticker-rating"><strong>4.5</strong><span>★ ★ ★ ★ ★</span><small>281+ Google reviews</small></div>
             <div className="hero-doodle doodle-star" aria-hidden="true">✦</div><div className="hero-doodle doodle-wave" aria-hidden="true">〰</div>
@@ -270,7 +347,7 @@ export default function Home() {
           <div className="sweet-confetti" aria-hidden="true"><i>•</i><i>✦</i><i>•</i><i>✧</i><span>〰</span></div>
           <div className="section-heading section-heading-row"><div><p className="eyebrow eyebrow-dark"><span /> A little something for everyone</p><h2 id="categories-title">Pick your<br /><em>happy place.</em></h2></div><p className="section-intro">Stop in for something cold, something savory, or just a good excuse to slow down for a minute.</p></div>
           <div className="category-grid">
-            {categories.map((category, index) => <motion.article className={`category-card category-${category.accent}`} key={category.label} initial={{ opacity: 0, y: 34 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.16 }} transition={{ delay: index * 0.08, duration: 0.62, ease }} whileHover={{ y: -7, rotate: index % 2 ? 0.7 : -0.7 }}><div className="category-image photo-placeholder"><img src={category.image} alt="" loading="lazy" /><span>Photo placeholder</span>{category.filter === "jamaican" && <div className="category-steam" aria-hidden="true"><i /><i /></div>}</div><div className="category-content"><span className="category-number">0{index + 1}</span><h3>{category.label}</h3><p>{category.description}</p><span className="category-hover-note">tap for favorites</span><button type="button" onClick={() => showMenu(category.filter)}>See favorites <Arrow /></button></div></motion.article>)}
+            {categories.map((category, index) => <motion.article className={`category-card category-${category.accent}`} key={category.label} initial={{ opacity: 0, y: 34 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.16 }} transition={{ delay: index * 0.08, duration: 0.62, ease }} whileHover={{ y: -7, rotate: index % 2 ? 0.7 : -0.7 }}><div className="category-image photo-placeholder"><img src={category.image} alt={category.label} loading="lazy" />{category.filter === "jamaican" && <div className="category-steam" aria-hidden="true"><i /><i /></div>}</div><div className="category-content"><span className="category-number">0{index + 1}</span><h3>{category.label}</h3><p>{category.description}</p><span className="category-hover-note">tap for favorites</span><button type="button" onClick={() => showMenu(category.filter)}>See favorites <Arrow /></button></div></motion.article>)}
           </div>
         </motion.section>
 
@@ -279,14 +356,14 @@ export default function Home() {
           <div className="menu-filters" role="tablist" aria-label="Filter menu items">{filterLabels.map((filter) => <button key={filter.value} className={activeMenu === filter.value ? "active" : ""} type="button" role="tab" aria-selected={activeMenu === filter.value} onClick={() => setActiveMenu(filter.value)}>{filter.label}</button>)}</div>
           <motion.div className="menu-grid" layout>
             <AnimatePresence initial={false} mode="popLayout">
-              {visibleItems.map((item, index) => <motion.article className="menu-card" key={item.name} layout initial={{ opacity: 0, y: 24, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -18, scale: 0.94 }} transition={{ delay: index * 0.045, duration: 0.42, ease }} whileHover={{ y: -7, rotate: index % 2 ? 0.4 : -0.4 }}><div className="menu-card-image photo-placeholder"><img src={item.image} alt={item.name} loading="lazy" /><span>Photo placeholder</span>{item.tag && <span className="menu-tag">{item.tag}</span>}</div><div className="menu-card-copy"><div className="menu-card-title"><h3>{item.name}</h3>{item.price ? <strong>{item.price}</strong> : <span className="ask-price">Ask us</span>}</div><p>{item.description}</p></div></motion.article>)}
+              {visibleItems.map((item, index) => <MenuCard item={item} index={index} key={item.name} />)}
             </AnimatePresence>
           </motion.div>
           <p className="menu-note">Menu items and prices are transcribed from the supplied menu boards. Flavors, add-ons, and availability can change — call ahead if you’re looking for something specific.</p>
         </motion.section>
 
         <motion.section className="about-section" id="about" aria-labelledby="about-title" {...reveal}>
-          <div className="about-photo photo-placeholder"><img src={photo("photo-1521017432531-fbd92d768814")} alt="Colorful café table with food and drinks" loading="lazy" /><span>Photo placeholder</span><div className="about-stamp" aria-hidden="true"><span>gunnison’s</span><strong>happy<br />little<br />corner</strong></div></div>
+          <div className="about-photo photo-placeholder"><img src={photo("photo-1521017432531-fbd92d768814")} alt="Colorful café table with food and drinks" loading="lazy" /><div className="about-stamp" aria-hidden="true"><span>gunnison’s</span><strong>happy<br />little<br />corner</strong></div></div>
           <div className="about-copy"><p className="eyebrow eyebrow-dark"><span /> More than a pit stop</p><h2 id="about-title">Good food.<br /><em>Good people.</em><br />Good energy.</h2><p>Jermaine’s is a locally loved Gunnison café with a colorful, Caribbean-inspired personality and something for every appetite. Come by for a frozen yogurt piled with toppings, a generous sandwich, a Jamaican beef patty, or a coffee and pastry that makes the morning feel easy.</p><p>It’s casual, welcoming, and made for the whole crew — families, tourists, teenagers, and regulars who know exactly what they want.</p><div className="about-signoff"><span>Eat · Drink · Love</span><i aria-hidden="true">✦</i></div></div>
         </motion.section>
 
@@ -304,21 +381,21 @@ export default function Home() {
         <motion.section className="section gallery-section" id="gallery" aria-labelledby="gallery-title" {...reveal}>
           <div className="section-heading section-heading-row"><div><p className="eyebrow eyebrow-dark"><span /> A peek at the vibe</p><h2 id="gallery-title">Come for the<br /><em>color.</em></h2></div><p className="section-intro">A bright little corner with cold treats, warm welcomes, and plenty of reasons to stay a little longer.</p></div>
           <div className="gallery-grid">
-            {galleryPhotos.map((item, index) => <motion.button className={`gallery-tile photo-placeholder gallery-photo-${index + 1} ${index === 0 ? "gallery-tall" : index === 2 ? "gallery-wide" : ""}`} key={item.label} type="button" onClick={() => setLightboxIndex(index)} initial={{ opacity: 0, y: index % 2 ? 28 : 0, x: index % 2 ? 18 : -18 }} whileInView={{ opacity: 1, y: 0, x: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ delay: index * 0.08, duration: 0.65, ease }} aria-label={`Open ${item.label} photo`}><img src={item.src} alt={item.alt} loading="lazy" /><span>Photo placeholder · {item.label}</span></motion.button>)}
+            {galleryPhotos.map((item, index) => <motion.button className={`gallery-tile photo-placeholder gallery-photo-${index + 1} ${index === 0 ? "gallery-tall" : index === 2 ? "gallery-wide" : ""}`} key={item.label} type="button" onClick={() => setLightboxIndex(index)} initial={{ opacity: 0, y: index % 2 ? 28 : 0, x: index % 2 ? 18 : -18 }} whileInView={{ opacity: 1, y: 0, x: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ delay: index * 0.08, duration: 0.65, ease }} aria-label={`Open ${item.label} photo`}><img src={item.src} alt={item.alt} loading="lazy" /><span className="gallery-label">{item.label}</span></motion.button>)}
             <div className="gallery-tile gallery-accent"><span className="gallery-spark" aria-hidden="true">✦</span><strong>Bring<br />your<br />people.</strong><small>there’s room for your whole crew</small></div>
           </div>
-          <p className="placeholder-note">Photo placeholders are ready to be replaced with Jermaine’s own café photography. Click a photo to preview it larger.</p>
+          <p className="placeholder-note">A visual taste of the colorful, easygoing energy waiting inside.</p>
         </motion.section>
 
         <motion.section className="visit-section" id="visit" aria-labelledby="visit-title" {...reveal}>
-          <div className="visit-copy"><p className="eyebrow"><span /> Find your way here</p><h2 id="visit-title">Meet us at<br /><em>the happy corner.</em></h2><div className="address-block"><strong>Jermaine’s</strong><span>728 N Main St<br />Gunnison, CO 81230</span><small>Located in Mountain Meadows Shopping Center</small></div><div className="visit-actions"><a className="button button-primary" href={directionsUrl} target="_blank" rel="noreferrer">Open in Google Maps <Arrow /></a><a className="button button-light" href="tel:+19706419876">Call now <span aria-hidden="true">☎</span></a></div></div>
-          <div className="visit-card"><div className="map-placeholder" role="img" aria-label="Map placeholder showing Jermaine’s location in Gunnison"><div className="map-grid" /><div className="map-road road-one" /><div className="map-road road-two" /><motion.div className="map-pin" style={{ rotate: -45 }} initial={{ opacity: 0, y: -42, scale: 0.65 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, amount: 0.45 }} transition={{ type: "spring", stiffness: 260, damping: 15 }}><span>J</span></motion.div><div className="map-label">Mountain Meadows<br /><small>728 N Main St</small></div><span className="map-placeholder-label">Map placeholder</span></div><div className="hours-card"><div><span className="open-pulse" aria-hidden="true" /><strong>Hours</strong></div><p><span>Mon – Sat</span>8:00 AM – 9:30 PM</p><p><span>Sunday</span>12:00 PM – 9:30 PM</p><a href="tel:+19706419876">(970) 641-9876 <Arrow /></a></div></div>
+          <div className="visit-copy"><p className="eyebrow"><span /> Find your way here</p><h2 id="visit-title">Meet us at<br /><em>the happy corner.</em></h2><div className="address-block"><strong>Jermaine’s</strong><span>728 N Main St<br />Gunnison, CO 81230</span><small>Located in Mountain Meadows Shopping Center</small></div><div className="visit-actions"><a className="button button-primary" href={directionsUrl} target="_blank" rel="noreferrer">Open in Google Maps <Arrow /></a><a className="button button-light" href="tel:+19706419876">Call to order <span aria-hidden="true">☎</span></a></div></div>
+          <div className="visit-card"><div className="map-placeholder" role="img" aria-label="Map showing Jermaine’s location in Gunnison"><div className="map-grid" /><div className="map-road road-one" /><div className="map-road road-two" /><motion.div className="map-pin" style={{ rotate: -45 }} initial={{ opacity: 0, y: -42, scale: 0.65 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, amount: 0.45 }} transition={{ type: "spring", stiffness: 260, damping: 15 }}><span>J</span></motion.div><div className="map-label">Mountain Meadows<br /><small>728 N Main St</small></div><span className="map-placeholder-label">Find us here</span></div><div className="hours-card"><div><span className="open-pulse" aria-hidden="true" /><strong>Hours</strong></div><p><span>Mon – Sat</span>8:00 AM – 9:30 PM</p><p><span>Sunday</span>12:00 PM – 9:30 PM</p><a href="tel:+19706419876">(970) 641-9876 <Arrow /></a></div></div>
         </motion.section>
 
         <footer className="site-footer"><div className="footer-top"><a className="brand footer-brand" href="#top" aria-label="Back to Jermaine’s home"><span className="brand-mark" aria-hidden="true">J</span><span className="brand-copy"><strong>Jermaine’s</strong><small>eat · drink · love</small></span></a><p>Bright bites.<br /><em>Big heart.</em></p><div className="footer-links"><a href="#menu">Menu</a><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#visit">Visit us</a></div></div><div className="footer-bottom"><div><span>728 N Main St · Gunnison, CO 81230</span><a href="tel:+19706419876">(970) 641-9876</a></div><div className="footer-socials"><a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Jermaine’s Facebook placeholder">Facebook · add link</a><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Jermaine’s Instagram placeholder">Instagram · add link</a></div><small>© {new Date().getFullYear()} Jermaine’s · Website designed for Jermaine’s</small></div></footer>
 
         <AnimatePresence>
-          {lightboxIndex !== null && <motion.div className="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><button className="lightbox-backdrop" type="button" aria-label="Close photo viewer" onClick={() => setLightboxIndex(null)} /><motion.div className="lightbox-card" initial={{ opacity: 0, y: 24, scale: 0.94 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 16, scale: 0.96 }} transition={{ duration: 0.35, ease }}><button className="lightbox-close" type="button" onClick={() => setLightboxIndex(null)} aria-label="Close photo viewer">×</button><img src={galleryPhotos[lightboxIndex].src} alt={galleryPhotos[lightboxIndex].alt} /><div className="lightbox-footer"><span>{galleryPhotos[lightboxIndex].label} · placeholder photo</span><div><button type="button" onClick={() => setLightboxIndex((current) => current === null ? 0 : (current - 1 + galleryPhotos.length) % galleryPhotos.length)} aria-label="Previous photo">←</button><button type="button" onClick={() => setLightboxIndex((current) => current === null ? 0 : (current + 1) % galleryPhotos.length)} aria-label="Next photo">→</button></div></div></motion.div></motion.div>}
+          {lightboxIndex !== null && <motion.div className="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><button className="lightbox-backdrop" type="button" aria-label="Close photo viewer" onClick={() => setLightboxIndex(null)} /><motion.div className="lightbox-card" initial={{ opacity: 0, y: 24, scale: 0.94 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 16, scale: 0.96 }} transition={{ duration: 0.35, ease }}><button className="lightbox-close" type="button" onClick={() => setLightboxIndex(null)} aria-label="Close photo viewer">×</button><img src={galleryPhotos[lightboxIndex].src} alt={galleryPhotos[lightboxIndex].alt} /><div className="lightbox-footer"><span>{galleryPhotos[lightboxIndex].label} · visual moodboard</span><div><button type="button" onClick={() => setLightboxIndex((current) => current === null ? 0 : (current - 1 + galleryPhotos.length) % galleryPhotos.length)} aria-label="Previous photo">←</button><button type="button" onClick={() => setLightboxIndex((current) => current === null ? 0 : (current + 1) % galleryPhotos.length)} aria-label="Next photo">→</button></div></div></motion.div></motion.div>}
         </AnimatePresence>
 
         <div className="mobile-action-bar" aria-label="Quick actions"><a href="tel:+19706419876"><span aria-hidden="true">☎</span> Call</a><a href={directionsUrl} target="_blank" rel="noreferrer"><span aria-hidden="true">↗</span> Directions</a></div>
