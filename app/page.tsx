@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 import { useEffect, useState } from "react";
 
-type MenuCategory = "all" | "sweet" | "savory" | "shakes" | "jamaican" | "coffee";
+type MenuCategory = "all" | "sweet" | "savory" | "breakfast" | "wraps" | "bowls" | "shakes" | "jamaican" | "coffee" | "drinks";
 type ItemCategory = Exclude<MenuCategory, "all">;
 
 type MenuItem = {
@@ -26,37 +26,116 @@ type MenuItem = {
 const imageParams = "auto=format&fit=crop&w=1200&q=84";
 const photo = (id: string) => `https://images.unsplash.com/${id}?${imageParams}`;
 const jamaicanPattyPhoto = "https://upload.wikimedia.org/wikipedia/commons/6/6c/05_Jamaican_Beef_Patty_-_Sybil%27s_Bakery_%284349822967%29.jpg?width=1200";
+const sandwichPhoto = photo("photo-1509722747041-616f39b57569");
+const grilledCheesePhoto = photo("photo-1528736235302-52922df5c122");
+const wrapPhoto = photo("photo-1626700051175-6818013e1d4f");
+const bowlPhoto = photo("photo-1512621776951-a57141f2eefd");
+const breakfastPhoto = photo("photo-1547592180-85f173990554");
+const coffeePhoto = photo("photo-1495474472287-4d71bcdd2085");
+const shakePhoto = photo("photo-1553787499-6f9133860278");
+const chocolateShakePhoto = photo("photo-1572490122747-3968b75cc699");
+const smoothiePhoto = photo("photo-1553530666-ba11a7da3888");
+const bobaPhoto = photo("photo-1558857563-b371033873d8");
 const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Jermaine%27s%2C+728+N+Main+St%2C+Gunnison%2C+CO+81230";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const menuItems: MenuItem[] = [
-  { name: "Caprese Melt", description: "A bright, melty favorite for lunch or an easy afternoon bite.", price: "$11.50", category: "savory", image: photo("photo-1509722747041-616f39b57569"), tag: "Crowd favorite" },
+  { name: "Roasted Chicken Panini", description: "Oven-roasted chicken, bacon, roasted yellow tomato, avocado, house BBQ, and pepper jack cheese. Add spinach $0.50.", price: "$10.50", category: "savory", image: sandwichPhoto, tag: "Panini" },
+  { name: "Pesto'nator", description: "Roasted chicken or turkey, tomato, spinach, basil pesto or roasted red pepper pesto, and mozzarella.", price: "$9.00", category: "savory", image: sandwichPhoto, tag: "Panini" },
+  { name: "Spicy Swiss", description: "Ham, Swiss cheese, onions, and Sriracha mayo. Add spinach $0.50.", price: "$8.50", category: "savory", image: grilledCheesePhoto, tag: "Panini" },
+  { name: "Caprese Melt", description: "Tomato, spinach, mozzarella cheese, and basil or roasted red pepper pesto. Sub vegan pesto $0.50.", price: "$11.50", category: "savory", image: sandwichPhoto, tag: "Crowd favorite" },
+  { name: "Cheese Melt", description: "Mozzarella cheese plus the cheese of your choice, toasted until melty.", price: "$8.50", category: "savory", image: grilledCheesePhoto, tag: "Easy favorite" },
+  { name: "Rib Daddy", description: "Braised short rib, caramelized onions, cheddar cheese, and BBQ sauce.", price: "$10.50", category: "savory", image: sandwichPhoto, tag: "Panini" },
+  { name: "Chicken Panini", description: "A generous toasted sandwich for a satisfying lunch stop.", category: "savory", image: photo("photo-1649305785246-a1d65e8bc078") },
+  { name: "Traditional Gyro Sandwich", description: "A savory gyro wrap with seasoned meat, fresh vegetables, and creamy sauce.", category: "savory", image: photo("photo-1676300187347-6f60002fd83e") },
+  { name: "Cowboy Wrap", description: "Oven-roasted chicken, bacon, Swiss cheese, avocado, spinach, green chili, and whipped cream cheese.", price: "$9.75", category: "wraps", image: wrapPhoto, tag: "Wrap" },
+  { name: "Farm Fresh Wrap", description: "Turkey, bacon, avocado, tomato, spinach, and veggie cream cheese.", price: "$10.00", category: "wraps", image: wrapPhoto, tag: "Wrap" },
+  { name: "Rib Wrap", description: "Braised short rib, avocado, caramelized onions, carrots, spinach, and BBQ sauce.", price: "$10.50", category: "wraps", image: wrapPhoto, tag: "Wrap" },
+  { name: "Mighty Meats Wrap", description: "Ham, bacon, caramelized onions, avocado, lettuce, tomato, and cheddar cheese.", price: "$9.50", category: "wraps", image: wrapPhoto, tag: "Wrap" },
+  { name: "Green Angel Wrap", description: "Lettuce, spinach, tomatoes, green peppers, cucumbers, avocado, red onions, carrots, and house-made carrot or basil pesto.", price: "$9.00", category: "wraps", image: wrapPhoto, tag: "Veggie" },
+  { name: "Jerk Chicken Wrap", description: "Jerk chicken, sweet corn, avocado, spinach, and lite buttermilk ranch.", price: "$10.00", category: "wraps", image: wrapPhoto, tag: "Jamaican-inspired" },
+  { name: "Chicken Pesto Bowl", description: "Exotic grains, oven-roasted chicken, carrots, and cucumber topped with basil pesto or roasted red pepper pesto. Sub vegan pesto $0.50.", price: "$11.50", category: "bowls", image: bowlPhoto, tag: "Bowl" },
+  { name: "Jerk Chicken Bowl", description: "Jerk chicken with exotic grains or a bed of greens, avocado, spinach, and house-made buttermilk ranch.", price: "$11.50", category: "bowls", image: bowlPhoto, tag: "Bowl" },
+  { name: "Ital Is Vital Bowl", description: "Lettuce, spinach, avocado, tomato, cucumber, green pepper, and red onion topped with ranch, basil pesto, or roasted red pepper pesto. Sub vegan pesto $0.50.", price: "$9.00", category: "bowls", image: bowlPhoto, tag: "Bowl" },
+  { name: "Breakfast Burrito Builder", description: "Build your burrito with eggs, bacon, sausage, ham, pecan-roasted shoulder bacon, shredded cheddar or Jack mix, onion, green pepper, tomato, spinach, avocado, hash brown, chili, or salsa. Includes a bag of chips.", category: "breakfast", image: wrapPhoto, tag: "Build your own" },
+  { name: "Mountaineer", description: "Bacon, sausage or ham, two eggs, and cheese. Add lettuce $0.50 or tomato $0.50.", price: "$8.00", category: "breakfast", image: sandwichPhoto, tag: "Breakfast" },
+  { name: "Hashtag", description: "Pecan-smoked shoulder bacon, cheese, hash browns, spinach, and yellow tomato.", price: "$9.50", category: "breakfast", image: sandwichPhoto, tag: "Breakfast" },
+  { name: "Da Sammy", description: "Plain cream cheese, turkey or ham, lettuce, tomato, and onion. Add cheese $0.50.", price: "$9.00", category: "breakfast", image: sandwichPhoto, tag: "Breakfast" },
+  { name: "BLT Breakfast Sandwich", description: "Bacon cream cheese, bacon, avocado, tomato, and lettuce.", price: "$9.00", category: "breakfast", image: sandwichPhoto, tag: "Breakfast" },
+  { name: "Veggie Delight", description: "House-made hummus, spinach, avocado, cucumber, carrots, and tomato.", price: "$9.00", category: "breakfast", image: wrapPhoto, tag: "Vegetarian" },
+  { name: "C.O.T.D.", description: "The catch of the day with plain cream cheese, red onions, capers, salmon, and tomato.", price: "$9.50", category: "breakfast", image: sandwichPhoto, tag: "Breakfast" },
+  { name: "Mr. Brown", description: "Two hash brown patties or an English muffin with fire-roasted short rib, poached eggs, and hollandaise sauce.", price: "$11.00", category: "breakfast", image: breakfastPhoto, tag: "Breakfast" },
+  { name: "C.Y.O. Sandwich", description: "Create your own masterpiece. Mix and match your favorite bread, fillings, vegetables, and spreads.", category: "breakfast", image: sandwichPhoto, tag: "Create your own" },
   { name: "Jamaican Beef Patty", description: "Golden, flaky pastry with a warm, savory center.", price: "$6.50", category: "jamaican", image: jamaicanPattyPhoto, tag: "Jamaican favorite" },
-  { name: "Caramel Macchiato Shake", description: "Coffeehouse comfort, blended into a cool, creamy treat.", price: "$5.50", category: "shakes", image: photo("photo-1553787499-6f9133860278"), tag: "Sweet sips" },
-  { name: "Snowcap Milkshake", description: "A classic thick shake made for big smiles and slow sips.", price: "$5.50", category: "shakes", image: photo("photo-1572490122747-3968b75cc699"), tag: "House classic" },
-  { name: "Cheese Melt", description: "Toasty, melty, and just right when the day calls for comfort.", price: "$8.50", category: "savory", image: photo("photo-1528736235302-52922df5c122"), tag: "Easy favorite" },
-  { name: "Traditional Gyro Sandwich", description: "One of the savory staples people come back for.", category: "savory", image: photo("photo-1676300187347-6f60002fd83e") },
-  { name: "Chicken Panini", description: "A generous, toasted sandwich for a satisfying lunch stop.", category: "savory", image: photo("photo-1649305785246-a1d65e8bc078") },
+  { name: "Veggie Patty", description: "Carrots, cabbage, and broccoli wrapped in flaky pastry.", price: "$5.50", category: "jamaican", image: jamaicanPattyPhoto, tag: "Jamaican favorite" },
+  { name: "Jerk Chicken Patty", description: "Marinated roasted chicken wrapped in flaky pastry.", price: "$5.50", category: "jamaican", image: jamaicanPattyPhoto, tag: "Jamaican favorite" },
+  { name: "Curry Chicken Patty", description: "Spicy curried chicken wrapped in flaky pastry.", price: "$5.50", category: "jamaican", image: jamaicanPattyPhoto, tag: "Jamaican favorite" },
+  { name: "Snowcap Milkshake", description: "Vanilla ice cream and white chocolate blended into a classic thick shake.", price: "$5.50", category: "shakes", image: chocolateShakePhoto, tag: "House classic" },
+  { name: "The Sea Turtle", description: "Chocolate ice cream, coconut, and caramel syrup.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
+  { name: "Cafe Au Lait Shake", description: "Vanilla ice cream and espresso blended smooth.", price: "$5.50", category: "shakes", image: shakePhoto },
+  { name: "Mocha Milkshake", description: "Vanilla or chocolate ice cream with espresso.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
+  { name: "Caramel Macchiato Shake", description: "Coffeehouse comfort, blended into a cool, creamy treat.", price: "$5.50", category: "shakes", image: shakePhoto, tag: "Sweet sips" },
+  { name: "Mudslide", description: "Vanilla or chocolate ice cream, Irish cream syrup, and espresso.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
+  { name: "Frappucino Milkshake", description: "Vanilla ice cream, hazelnut, and espresso.", price: "$5.50", category: "shakes", image: shakePhoto },
+  { name: "Easy Skankin'", description: "Vanilla ice cream and chocolate syrup.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
+  { name: "Powerhouse Milkshake", description: "Vanilla ice cream, banana, protein powder, and peanut butter.", price: "$5.50", category: "shakes", image: shakePhoto },
+  { name: "Peanut Butter Milkshake", description: "Vanilla ice cream and peanut butter.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
+  { name: "Oreo Milkshake", description: "Vanilla or chocolate ice cream and Oreo cookies.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
+  { name: "M&M Milkshake", description: "Vanilla or chocolate ice cream and M&M's.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
+  { name: "Reese's Milkshake", description: "Vanilla or chocolate ice cream and Reese's peanut butter cups.", price: "$5.50", category: "shakes", image: chocolateShakePhoto },
+  { name: "Black Berry Milkshake", description: "Vanilla ice cream and blackberries.", price: "$5.50", category: "shakes", image: smoothiePhoto },
+  { name: "Chai Shake", description: "Vanilla ice cream and L.P. chai.", price: "$5.50", category: "shakes", image: shakePhoto },
+  { name: "Ice Cream Shake", description: "Mix and match any of our ice cream flavors.", price: "$5.50", category: "shakes", image: shakePhoto },
+  { name: "Caribbean Smoothie", description: "Pineapples, mango, sorbet, and fruit juice.", price: "$5.50", category: "shakes", image: smoothiePhoto, tag: "Dairy free" },
+  { name: "Mango Burst Smoothie", description: "Mango, sorbet, and apple juice.", price: "$5.50", category: "shakes", image: smoothiePhoto, tag: "Dairy free" },
+  { name: "Triple Berry Smoothie", description: "Blueberry, strawberry, raspberry, sorbet, and pear juice.", price: "$5.50", category: "shakes", image: smoothiePhoto, tag: "Dairy free" },
+  { name: "Strawberry Banana Smoothie", description: "Strawberry, banana, fro-yo, apple, and pear juice.", price: "$5.50", category: "shakes", image: smoothiePhoto },
+  { name: "Green Machine Smoothie", description: "Mango, spinach, sorbet, ginger, and apple juice.", price: "$5.50", category: "shakes", image: smoothiePhoto, tag: "Dairy free" },
   { name: "Frozen Yogurt", description: "Build your own cup with flavors and toppings to match your mood.", category: "sweet", image: photo("photo-1550594645-25c5bd703258"), tag: "Make it yours" },
   { name: "Ice Cream", description: "A cheerful scoop, a colorful cone, or however you like it.", category: "sweet", image: photo("photo-1501443762994-82bd5dace89a"), tag: "Cool treat" },
-  { name: "Jamaican Coffee", description: "A warm cup to start your morning or reset your afternoon.", category: "coffee", image: photo("photo-1495474472287-4d71bcdd2085") },
+  { name: "Drip Coffee", description: "Bring your own cup or choose a 12 oz or 16 oz pour.", price: "$2.00+", category: "coffee", image: coffeePhoto, tag: "Hot or iced" },
+  { name: "Hot Tea", description: "A warm, easy cup for a slower morning or afternoon reset.", price: "$1.25+", category: "coffee", image: coffeePhoto },
+  { name: "Jamaican Blue Mountain Coffee", description: "French press coffee served as a rich, slow-sipping specialty.", price: "$4.00", category: "coffee", image: coffeePhoto, tag: "Specialty coffee" },
+  { name: "Americano", description: "Espresso and water. 12 oz or 16 oz.", price: "$2.35+", category: "coffee", image: coffeePhoto },
+  { name: "Mocha", description: "Espresso, chocolate, and milk. 12 oz or 16 oz.", price: "$3.60+", category: "coffee", image: coffeePhoto },
+  { name: "Latte", description: "Espresso and steamed milk. 12 oz or 16 oz.", price: "$3.25+", category: "coffee", image: coffeePhoto },
+  { name: "White Mocha", description: "Espresso, white chocolate, and milk. 12 oz or 16 oz.", price: "$3.60+", category: "coffee", image: coffeePhoto },
+  { name: "Cappuccino", description: "Espresso, steamed milk, and foam. 12 oz or 16 oz.", price: "$3.25+", category: "coffee", image: coffeePhoto },
+  { name: "Chai Latte", description: "L.P. chai and milk. 12 oz or 16 oz.", price: "$3.25+", category: "coffee", image: coffeePhoto },
+  { name: "Dirty Chai", description: "L.P. chai, milk, and espresso. 12 oz or 16 oz.", price: "$3.50+", category: "coffee", image: coffeePhoto },
+  { name: "Hot Chocolate", description: "Rich hot chocolate served warm and cozy.", price: "$3.35+", category: "coffee", image: chocolateShakePhoto },
+  { name: "Matcha Latte", description: "Matcha and milk with a bright, earthy finish. 12 oz or 16 oz.", price: "$3.65+", category: "coffee", image: coffeePhoto },
+  { name: "Italian Cream Soda", description: "Ask about the current flavors and make it a refreshing, creamy soda.", price: "$3.25", category: "drinks", image: smoothiePhoto, tag: "Ask about flavors" },
+  { name: "Lavender Milk Tea", description: "Crystal boba with a floral lavender milk tea base.", price: "$5.25", category: "drinks", image: bobaPhoto, tag: "Crystal boba" },
+  { name: "Milk Tea", description: "Classic milk tea with crystal boba.", price: "$5.25", category: "drinks", image: bobaPhoto, tag: "Crystal boba" },
+  { name: "Matcha Green Tea", description: "Bright matcha green tea with crystal boba.", price: "$5.25", category: "drinks", image: bobaPhoto, tag: "Crystal boba" },
+  { name: "Passion Fruit Tea", description: "A bright, tropical tea for an easy afternoon sip.", price: "$4.00", category: "drinks", image: smoothiePhoto },
+  { name: "Soda", description: "A simple cold drink to go with lunch or a sweet treat.", price: "$3.50", category: "drinks", image: smoothiePhoto },
 ];
 
 const categories: Array<{ label: string; filter: ItemCategory; description: string; image: string; accent: string }> = [
   { label: "Ice Cream & Fro-Yo", filter: "sweet", description: "Cool, creamy, and completely your call with toppings.", image: photo("photo-1501443762994-82bd5dace89a"), accent: "mango" },
-  { label: "Sandwiches & Paninis", filter: "savory", description: "Toasty, generous, and ready when the trail day turns hungry.", image: photo("photo-1509722747041-616f39b57569"), accent: "turquoise" },
-  { label: "Shakes & Smoothies", filter: "shakes", description: "Thick shakes, bright smoothies, and little vacation energy.", image: photo("photo-1553787499-6f9133860278"), accent: "coral" },
+  { label: "Paninis & Sandwiches", filter: "savory", description: "Toasty, generous, and ready when the trail day turns hungry.", image: sandwichPhoto, accent: "turquoise" },
+  { label: "Breakfast Burritos", filter: "breakfast", description: "Build a breakfast burrito or start the day with a loaded sandwich.", image: wrapPhoto, accent: "sunshine" },
+  { label: "Wraps", filter: "wraps", description: "Fresh vegetables, hearty fillings, and big lunch energy.", image: wrapPhoto, accent: "lavender" },
+  { label: "Bowls", filter: "bowls", description: "Hearty grains, crisp greens, and colorful toppings.", image: bowlPhoto, accent: "sunshine" },
+  { label: "Shakes & Smoothies", filter: "shakes", description: "Thick shakes, bright smoothies, and little vacation energy.", image: shakePhoto, accent: "coral" },
   { label: "Jamaican Favorites", filter: "jamaican", description: "A Caribbean wink in the middle of Colorado’s mountain air.", image: jamaicanPattyPhoto, accent: "green" },
-  { label: "Coffee & Baked Treats", filter: "coffee", description: "Warm cups and bakery-case treasures for a slower moment.", image: photo("photo-1495474472287-4d71bcdd2085"), accent: "sunshine" },
+  { label: "Coffee", filter: "coffee", description: "Warm cups, Jamaican Blue Mountain coffee, and easy morning favorites.", image: coffeePhoto, accent: "green" },
+  { label: "Cool Drinks", filter: "drinks", description: "Italian cream soda, fruit tea, milk tea, and crystal boba.", image: bobaPhoto, accent: "coral" },
 ];
 
 const filterLabels: Array<{ label: string; value: MenuCategory }> = [
   { label: "Everything", value: "all" },
   { label: "Sweet treats", value: "sweet" },
-  { label: "Savory favorites", value: "savory" },
+  { label: "Paninis & sandwiches", value: "savory" },
+  { label: "Breakfast", value: "breakfast" },
+  { label: "Wraps", value: "wraps" },
+  { label: "Bowls", value: "bowls" },
   { label: "Shakes & smoothies", value: "shakes" },
   { label: "Jamaican favorites", value: "jamaican" },
-  { label: "Coffee & baked", value: "coffee" },
+  { label: "Coffee", value: "coffee" },
+  { label: "More drinks", value: "drinks" },
 ];
 
 const reviews = [
@@ -196,14 +275,14 @@ export default function Home() {
         </motion.section>
 
         <motion.section className="section menu-section" id="menu" aria-labelledby="menu-title" {...reveal}>
-          <div className="menu-header"><div><p className="eyebrow"><span /> What’s good today</p><h2 id="menu-title">The <em>good stuff.</em></h2></div><p>A few crowd favorites to get you started. Ask the team about today’s flavors, toppings, and bakery treats.</p></div>
+          <div className="menu-header"><div><p className="eyebrow"><span /> The full menu</p><h2 id="menu-title">All the <em>good stuff.</em></h2></div><p>Paninis, wraps, bowls, breakfast builds, Jamaican favorites, shakes, smoothies, coffee, boba, and more — organized by category so you can find your thing fast.</p></div>
           <div className="menu-filters" role="tablist" aria-label="Filter menu items">{filterLabels.map((filter) => <button key={filter.value} className={activeMenu === filter.value ? "active" : ""} type="button" role="tab" aria-selected={activeMenu === filter.value} onClick={() => setActiveMenu(filter.value)}>{filter.label}</button>)}</div>
           <motion.div className="menu-grid" layout>
             <AnimatePresence initial={false} mode="popLayout">
               {visibleItems.map((item, index) => <motion.article className="menu-card" key={item.name} layout initial={{ opacity: 0, y: 24, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -18, scale: 0.94 }} transition={{ delay: index * 0.045, duration: 0.42, ease }} whileHover={{ y: -7, rotate: index % 2 ? 0.4 : -0.4 }}><div className="menu-card-image photo-placeholder"><img src={item.image} alt={item.name} loading="lazy" /><span>Photo placeholder</span>{item.tag && <span className="menu-tag">{item.tag}</span>}</div><div className="menu-card-copy"><div className="menu-card-title"><h3>{item.name}</h3>{item.price ? <strong>{item.price}</strong> : <span className="ask-price">Ask us</span>}</div><p>{item.description}</p></div></motion.article>)}
             </AnimatePresence>
           </motion.div>
-          <p className="menu-note">Prices shown where provided. Menu flavors and availability can change — call ahead if you’re looking for something specific.</p>
+          <p className="menu-note">Menu items and prices are transcribed from the supplied menu boards. Flavors, add-ons, and availability can change — call ahead if you’re looking for something specific.</p>
         </motion.section>
 
         <motion.section className="about-section" id="about" aria-labelledby="about-title" {...reveal}>
