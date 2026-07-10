@@ -92,6 +92,10 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 - `npm test`: build the starter and verify its rendered loading skeleton
 - `npm run db:generate`: generate Drizzle migrations after schema changes
 
+## Photo Credits
+
+- Jamaican Beef Patty photo: [“05 Jamaican Beef Patty - Sybil's Bakery”](https://commons.wikimedia.org/wiki/File:05_Jamaican_Beef_Patty_-_Sybil%27s_Bakery_(4349822967).jpg) by Jason Lam, licensed under [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/).
+
 ## Learn More
 
 - [vinext Documentation](https://github.com/cloudflare/vinext)

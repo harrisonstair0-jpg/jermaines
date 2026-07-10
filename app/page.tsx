@@ -25,27 +25,28 @@ type MenuItem = {
 
 const imageParams = "auto=format&fit=crop&w=1200&q=84";
 const photo = (id: string) => `https://images.unsplash.com/${id}?${imageParams}`;
+const jamaicanPattyPhoto = "https://upload.wikimedia.org/wikipedia/commons/6/6c/05_Jamaican_Beef_Patty_-_Sybil%27s_Bakery_%284349822967%29.jpg?width=1200";
 const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Jermaine%27s%2C+728+N+Main+St%2C+Gunnison%2C+CO+81230";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const menuItems: MenuItem[] = [
-  { name: "Caprese Melt", description: "A bright, melty favorite for lunch or an easy afternoon bite.", price: "$11.50", category: "savory", image: photo("photo-1528735602780-2552fd46c7af"), tag: "Crowd favorite" },
-  { name: "Jamaican Beef Patty", description: "Golden, flaky pastry with a warm, savory center.", price: "$6.50", category: "jamaican", image: photo("photo-1601050690597-df0568f70950"), tag: "Jamaican favorite" },
-  { name: "Caramel Macchiato Shake", description: "Coffeehouse comfort, blended into a cool, creamy treat.", price: "$5.50", category: "shakes", image: photo("photo-1553530666-ba11a7da3888"), tag: "Sweet sips" },
+  { name: "Caprese Melt", description: "A bright, melty favorite for lunch or an easy afternoon bite.", price: "$11.50", category: "savory", image: photo("photo-1509722747041-616f39b57569"), tag: "Crowd favorite" },
+  { name: "Jamaican Beef Patty", description: "Golden, flaky pastry with a warm, savory center.", price: "$6.50", category: "jamaican", image: jamaicanPattyPhoto, tag: "Jamaican favorite" },
+  { name: "Caramel Macchiato Shake", description: "Coffeehouse comfort, blended into a cool, creamy treat.", price: "$5.50", category: "shakes", image: photo("photo-1553787499-6f9133860278"), tag: "Sweet sips" },
   { name: "Snowcap Milkshake", description: "A classic thick shake made for big smiles and slow sips.", price: "$5.50", category: "shakes", image: photo("photo-1572490122747-3968b75cc699"), tag: "House classic" },
-  { name: "Cheese Melt", description: "Toasty, melty, and just right when the day calls for comfort.", price: "$8.50", category: "savory", image: photo("photo-1481070414801-51fd732d7184"), tag: "Easy favorite" },
-  { name: "Traditional Gyro Sandwich", description: "One of the savory staples people come back for.", category: "savory", image: photo("photo-1529006557810-274b9b2fc783") },
-  { name: "Chicken Panini", description: "A generous, toasted sandwich for a satisfying lunch stop.", category: "savory", image: photo("photo-1540914124281-342587941389") },
-  { name: "Frozen Yogurt", description: "Build your own cup with flavors and toppings to match your mood.", category: "sweet", image: photo("photo-1563805042-7684c019e1cb"), tag: "Make it yours" },
+  { name: "Cheese Melt", description: "Toasty, melty, and just right when the day calls for comfort.", price: "$8.50", category: "savory", image: photo("photo-1528736235302-52922df5c122"), tag: "Easy favorite" },
+  { name: "Traditional Gyro Sandwich", description: "One of the savory staples people come back for.", category: "savory", image: photo("photo-1676300187347-6f60002fd83e") },
+  { name: "Chicken Panini", description: "A generous, toasted sandwich for a satisfying lunch stop.", category: "savory", image: photo("photo-1649305785246-a1d65e8bc078") },
+  { name: "Frozen Yogurt", description: "Build your own cup with flavors and toppings to match your mood.", category: "sweet", image: photo("photo-1550594645-25c5bd703258"), tag: "Make it yours" },
   { name: "Ice Cream", description: "A cheerful scoop, a colorful cone, or however you like it.", category: "sweet", image: photo("photo-1501443762994-82bd5dace89a"), tag: "Cool treat" },
   { name: "Jamaican Coffee", description: "A warm cup to start your morning or reset your afternoon.", category: "coffee", image: photo("photo-1495474472287-4d71bcdd2085") },
 ];
 
 const categories: Array<{ label: string; filter: ItemCategory; description: string; image: string; accent: string }> = [
   { label: "Ice Cream & Fro-Yo", filter: "sweet", description: "Cool, creamy, and completely your call with toppings.", image: photo("photo-1501443762994-82bd5dace89a"), accent: "mango" },
-  { label: "Sandwiches & Paninis", filter: "savory", description: "Toasty, generous, and ready when the trail day turns hungry.", image: photo("photo-1528735602780-2552fd46c7af"), accent: "turquoise" },
-  { label: "Shakes & Smoothies", filter: "shakes", description: "Thick shakes, bright smoothies, and little vacation energy.", image: photo("photo-1553530666-ba11a7da3888"), accent: "coral" },
-  { label: "Jamaican Favorites", filter: "jamaican", description: "A Caribbean wink in the middle of Colorado’s mountain air.", image: photo("photo-1601050690597-df0568f70950"), accent: "green" },
+  { label: "Sandwiches & Paninis", filter: "savory", description: "Toasty, generous, and ready when the trail day turns hungry.", image: photo("photo-1509722747041-616f39b57569"), accent: "turquoise" },
+  { label: "Shakes & Smoothies", filter: "shakes", description: "Thick shakes, bright smoothies, and little vacation energy.", image: photo("photo-1553787499-6f9133860278"), accent: "coral" },
+  { label: "Jamaican Favorites", filter: "jamaican", description: "A Caribbean wink in the middle of Colorado’s mountain air.", image: jamaicanPattyPhoto, accent: "green" },
   { label: "Coffee & Baked Treats", filter: "coffee", description: "Warm cups and bakery-case treasures for a slower moment.", image: photo("photo-1495474472287-4d71bcdd2085"), accent: "sunshine" },
 ];
 
@@ -199,7 +200,7 @@ export default function Home() {
           <div className="menu-filters" role="tablist" aria-label="Filter menu items">{filterLabels.map((filter) => <button key={filter.value} className={activeMenu === filter.value ? "active" : ""} type="button" role="tab" aria-selected={activeMenu === filter.value} onClick={() => setActiveMenu(filter.value)}>{filter.label}</button>)}</div>
           <motion.div className="menu-grid" layout>
             <AnimatePresence initial={false} mode="popLayout">
-              {visibleItems.map((item, index) => <motion.article className="menu-card" key={item.name} layout initial={{ opacity: 0, y: 24, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -18, scale: 0.94 }} transition={{ delay: index * 0.045, duration: 0.42, ease }} whileHover={{ y: -7, rotate: index % 2 ? 0.4 : -0.4 }}><div className="menu-card-image photo-placeholder"><img src={item.image} alt="" loading="lazy" /><span>Photo placeholder</span>{item.tag && <span className="menu-tag">{item.tag}</span>}</div><div className="menu-card-copy"><div className="menu-card-title"><h3>{item.name}</h3>{item.price ? <strong>{item.price}</strong> : <span className="ask-price">Ask us</span>}</div><p>{item.description}</p></div></motion.article>)}
+              {visibleItems.map((item, index) => <motion.article className="menu-card" key={item.name} layout initial={{ opacity: 0, y: 24, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -18, scale: 0.94 }} transition={{ delay: index * 0.045, duration: 0.42, ease }} whileHover={{ y: -7, rotate: index % 2 ? 0.4 : -0.4 }}><div className="menu-card-image photo-placeholder"><img src={item.image} alt={item.name} loading="lazy" /><span>Photo placeholder</span>{item.tag && <span className="menu-tag">{item.tag}</span>}</div><div className="menu-card-copy"><div className="menu-card-title"><h3>{item.name}</h3>{item.price ? <strong>{item.price}</strong> : <span className="ask-price">Ask us</span>}</div><p>{item.description}</p></div></motion.article>)}
             </AnimatePresence>
           </motion.div>
           <p className="menu-note">Prices shown where provided. Menu flavors and availability can change — call ahead if you’re looking for something specific.</p>
