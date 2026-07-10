@@ -1,0 +1,67 @@
+name: Deploy Jermaine’s to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build the static GitHub Pages site
+        run: GITHUB_PAGES=true pnpm run build
+
+      - name: Render the shareable entry page
+        run: |
+          GITHUB_PAGES=true pnpm run start -- --port 4173 > /tmp/jermaines-start.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for attempt in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/jermaines/ -o dist/client/index.html; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/jermaines-start.log
+          exit 1
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload the static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist/client
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
