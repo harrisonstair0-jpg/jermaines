@@ -23,7 +23,9 @@ test("server-renders Jermaine’s café page", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Jermaine’s \| Eat\. Drink\. Love\./i);
-  assert.match(html, /Eat\.<br\/><em>Drink\.<\/em><br\/>Love\./i);
+  assert.match(html, /class="hero-word[^>]*">Eat\.<\/span>/i);
+  assert.match(html, /class="hero-word[^>]*">Drink\.<\/span>/i);
+  assert.match(html, /class="hero-word[^>]*">Love\.<\/span>/i);
   assert.match(html, /281\+ Google reviews/i);
   assert.match(html, /728 N Main St/i);
   assert.match(html, /application\/ld\+json/i);
@@ -39,6 +41,7 @@ test("keeps the finished site free of starter-only files and metadata", async ()
   ]);
 
   assert.match(page, /restaurantSchema/);
+  assert.match(page, /MotionConfig|AnimatePresence/);
   assert.match(page, /Photo placeholder/);
   assert.match(page, /tel:\+19706419876/);
   assert.match(layout, /Jermaine’s \| Eat\. Drink\. Love\./);
@@ -46,5 +49,6 @@ test("keeps the finished site free of starter-only files and metadata", async ()
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview|_sites-preview/);
   assert.doesNotMatch(layout, /Starter Project|codex-preview|_sites-preview/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+  assert.match(packageJson, /framer-motion/);
   await assert.rejects(access(new URL("../app/_sites-preview/SkeletonPreview.tsx", import.meta.url)));
 });
